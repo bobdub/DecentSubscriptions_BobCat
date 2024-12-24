@@ -1,2 +1,4 @@
 # DecentSubscriptions
 A Decent Super Simple Smart Subscriber button
+
+0x8C6E80B510216840f4eFf18D6d2A9bD81f38e6CC

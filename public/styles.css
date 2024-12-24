@@ -1,0 +1,199 @@
+/* General Styling */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+    font-family: chalkduster, sans-serif;
+    color: white;
+}
+
+.header {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+.contract-link {
+    color: #0ff;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.contract-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #0ff;
+}
+
+.container {
+    text-align: center;
+}
+
+.neon-text {
+    font-size: 2rem;
+    color: #0ff;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    margin-bottom: 20px;
+}
+
+/* Subscription Button Styles */
+.subscription-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Glow Effect on Subscription Button */
+.subscription-button {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #0ff, #00f);
+    box-shadow: 0 0 30px #0ff, 0 0 60px #00f, 0 0 90px #00f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.subscription-button:hover {
+    box-shadow: 0 0 30px #0f0, 0 0 60px #0f0, 0 0 90px #0f0;
+}
+
+/* Subscribe Button */
+.neon-submit {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #0ff;
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+/* Apply glow change on hover of the Subscribe button */
+.neon-submit:hover {
+    color: #fff;
+    box-shadow: 0 0 20px #fff, 0 0 40px #0f0;
+}
+
+.subscription-button:hover .neon-submit {
+    color: #fff;
+    text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
+}
+
+.neon-input {
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    color: #0ff;
+    padding: 10px;
+    font-size: 1.5rem;
+    outline: none;
+    width: 100px;
+    text-align: center;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+.neon-submit {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #0ff;
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+.neon-submit:hover {
+    color: rgba(246, 255, 0, 0.562);
+    text-shadow: 0 0 10px rgba(246, 255, 0, 0.562), 0 0 20px rgb(97, 222, 88);
+    box-shadow: 0 0 20px rgba(242, 252, 65, 0.569), 0 0 40px rgba(100, 249, 67, 0.643);
+}
+
+.neon-button {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #0ff;
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+.neon-button:hover {
+    color: rgba(255, 0, 174, 0.542);
+    text-shadow: 0 0 10px rgba(255, 0, 174, 0.542), 0 0 20px rgba(238, 255, 0, 0.45);
+    box-shadow: 0 0 20px rgba(255, 0, 174, 0.542), 0 0 40px rgba(255, 0, 174, 0.542);
+}
+
+/* About Button */
+.about-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #0ff, #00f);
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #00f;
+    transition: 0.3s ease;
+    border: none;
+}
+
+.about-button:hover {
+    box-shadow: 0 0 20px #fff, 0 0 40px #0ff;
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: black;
+    border: 2px solid #0ff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #0ff;
+    text-align: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    color: white;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: #0ff;
+}

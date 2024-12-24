@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <a id="contractLink" class="contract-link" href="#" target="_blank">View Contract</a>
+    </header>
+    <div class="container">
+        <h1 class="neon-text">Subscribe to a Decent Future!</h1>
+        <div class="subscription-wrapper">
+            <div class="subscription-button">
+                <label for="months">Enter Months</label>
+                <input type="number" id="months" min="1" value="1" class="neon-input">
+                <button id="subscribeButton" class="neon-submit">Subscribe</button>
+            </div>
+        </div>
+        <div id="status" class="neon-text"></div>
+        <button id="cancelButton" class="neon-button">Cancel Subscription</button>
+    </div>
+
+    <!-- About Button -->
+    <button id="aboutButton" class="about-button">?</button>
+
+    <!-- About Modal -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close-button">&times;</span>
+            <h2>About This DApp</h2>
+            <p>This is a subscription-based decentralized application powered by smart contracts on the Polygon network. Pay for access to exclusive features and maintain your subscription with ease.</p>
+            <p>For more details, visit the contract on PolygonScan using the link at the top.</p>
+        </div>
+    </div>
+</body>
+</html>
