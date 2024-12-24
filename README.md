@@ -1,4 +1,4 @@
-# ⚸ᵢ[DecentSubscriptions](https://TheJollyLaMa.github.io/DecentSubscriptions/public)
+# ⚸ 🔆[DecentSubscriptions](https://TheJollyLaMa.github.io/DecentSubscriptions/public)
 
 A Decent Super Simple Smart Subscriber button
 
