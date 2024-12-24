@@ -1,6 +1,26 @@
 const contractAddress = "0x8C6E80B510216840f4eFf18D6d2A9bD81f38e6CC";
 
 document.addEventListener("DOMContentLoaded", async () => {
+    const aboutButton = document.getElementById("aboutButton");
+    const aboutModal = document.getElementById("aboutModal");
+    const closeModal = document.getElementById("closeModal");
+
+    // Open modal on button click
+    aboutButton.addEventListener("click", () => {
+        aboutModal.style.display = "block";
+    });
+
+    // Close modal on close button click
+    closeModal.addEventListener("click", () => {
+        aboutModal.style.display = "none";
+    });
+
+    // Close modal when clicking outside of the modal content
+    window.addEventListener("click", (event) => {
+        if (event.target === aboutModal) {
+            aboutModal.style.display = "none";
+        }
+    });
     const walletConnectButton = document.getElementById("walletConnectButton");
     // Fetch and display subscription fee
     // Wallet Connection and Contract Initialization

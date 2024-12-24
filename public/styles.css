@@ -181,8 +181,12 @@ body {
     z-index: 1000;
 }
 
-.modal-content {
-    color: white;
+.modal-content h2 {
+    color: #eeff00b5;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+}
+.modal-content p {
+    color: rgb(103, 254, 224);
 }
 
 .close-button {
