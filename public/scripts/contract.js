@@ -39,7 +39,7 @@ async function initializeContract(contractAddress) {
 
         console.log("Decent Subscription Contract Initialized:", subscriptionContract.address);
 
-        // Display contract address
+        // Display contract addressd
         const polygonIcons = Array(4)
             .fill('<img src="./assets/Polygon_Logo.png" class="icon-small" alt="Polygon">')
             .join("");

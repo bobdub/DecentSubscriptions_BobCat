@@ -371,6 +371,7 @@ body {
 .hidden {
     display: none;
 }
+/* Timeline Styling */
 .timeline {
     margin: 20px 0;
     padding: 10px;
@@ -385,12 +386,39 @@ body {
 .timeline-entry {
     margin-bottom: 15px;
     padding: 10px;
-    border-bottom: 1px solid #0ff;
+    border: 2px solid rgba(234, 255, 0, 0.619);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(234, 255, 0, 0.619);
 }
 
 .timeline-entry p {
-    margin: 0;
+    margin: 5px 0;
     font-size: 1rem;
+}
+
+.logo-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.logo-stack img {
+    width: 30px;
+    height: 30px;
+    margin: 5px 0;
+    filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.8));
+    animation: glow 1.5s infinite alternate;
+}
+
+/* Glow Animation */
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.8));
+    }
+    to {
+        filter: drop-shadow(0 0 15px rgba(0, 255, 255, 1));
+    }
 }
 
 #subscriptionGoodies {
@@ -473,4 +501,16 @@ body {
 .goodies-container a:hover {
     color: #ff0;
     text-shadow: 0 0 10px #ff0, 0 0 20px #f0f;
+}
+
+.neon-link {
+    color: #0ff;
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+}
+
+.neon-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #0f0;
 }

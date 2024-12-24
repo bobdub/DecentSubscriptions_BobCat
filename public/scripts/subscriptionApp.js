@@ -184,55 +184,123 @@ async function updateSubscriptionFee(newFeeInput) {
 }
 
 
-async function getSubscriptionEvents() {
+async function getAllContractEvents() {
     try {
-        const filter = subscriptionContract.filters.Subscribed(userAddress, null, null);
-        const events = await subscriptionContract.queryFilter(filter);
+        const connectedAddress = userAddress.toLowerCase();
 
-        console.log("Subscription Events:", events);
+        const subscribedFilter = subscriptionContract.filters.Subscribed(connectedAddress);
+        const canceledFilter = subscriptionContract.filters.SubscriptionCanceled(connectedAddress);
+        const feeUpdatedFilter = subscriptionContract.filters.SubscriptionFeeUpdated();
 
-        const timeline = await Promise.all(
-            events.map(async (event) => {
-                const { expiry, monthsPaid } = event.args;
-                
-                // Fetch block timestamp
-                const block = await walletProvider.getBlock(event.blockNumber);
-                const date = new Date(block.timestamp * 1000).toLocaleString();
+        const subscribedEvents = await subscriptionContract.queryFilter(subscribedFilter);
+        const canceledEvents = await subscriptionContract.queryFilter(canceledFilter);
+        const feeUpdatedEvents = await subscriptionContract.queryFilter(feeUpdatedFilter);
 
-                return {
-                    expiry: new Date(expiry.toNumber() * 1000).toLocaleString(),
-                    monthsPaid: monthsPaid.toString(),
-                    date, // Correct timestamp from block
-                };
-            })
+        const events = [];
+
+        // Combine all events with timestamps
+        for (const event of subscribedEvents) {
+            const block = await walletProvider.getBlock(event.blockNumber);
+            events.push({
+                type: "Subscribed",
+                user: event.args.user,
+                monthsPaid: event.args.monthsPaid.toString(),
+                expiry: new Date(event.args.expiry.toNumber() * 1000).toLocaleString(),
+                timestamp: new Date(block.timestamp * 1000).toLocaleString(),
+                transactionHash: event.transactionHash, // Add transaction hash
+            });
+        }
+
+        for (const event of canceledEvents) {
+            const block = await walletProvider.getBlock(event.blockNumber);
+            events.push({
+                type: "SubscriptionCanceled",
+                user: event.args.user,
+                timestamp: new Date(block.timestamp * 1000).toLocaleString(),
+                transactionHash: event.transactionHash, // Add transaction hash
+            });
+        }
+
+        for (const event of feeUpdatedEvents) {
+            const block = await walletProvider.getBlock(event.blockNumber);
+            events.push({
+                type: "SubscriptionFeeUpdated",
+                newFee: ethers.utils.formatUnits(event.args[0], "ether"),
+                timestamp: new Date(block.timestamp * 1000).toLocaleString(),
+                transactionHash: event.transactionHash, // Add transaction hash
+            });
+        }
+
+        // Filter events for the connected wallet
+        const filteredEvents = events.filter(
+            (event) => event.user?.toLowerCase() === connectedAddress
         );
 
-        return timeline;
+        // Sort events by timestamp
+        filteredEvents.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
+        return filteredEvents;
     } catch (error) {
-        console.error("Error fetching subscription events:", error.message);
+        console.error("Error fetching contract events:", error.message);
         return [];
     }
 }
 
 async function displaySubscriptionTimeline() {
-    const timeline = await getSubscriptionEvents();
+    const timeline = await getAllContractEvents();
 
     const timelineContainer = document.getElementById("timeline");
     if (timeline.length === 0) {
-        timelineContainer.innerHTML = "<p class='neon-text'>No subscription history found.</p>";
+        timelineContainer.innerHTML = "<p class='neon-text'>No subscription history found for this wallet.</p>";
         return;
     }
 
-    timelineContainer.innerHTML = "<h3 class='neon-text'>Subscription History</h3>";
+    timelineContainer.innerHTML = "<h3 class='neon-text'>Your Subscription Timeline</h3>";
 
-    timeline.forEach((entry) => {
+    timeline.forEach((entry, index) => {
         const timelineEntry = document.createElement("div");
         timelineEntry.classList.add("timeline-entry");
-        timelineEntry.innerHTML = `
-            <p>Date: ${entry.date}</p>
-            <p>Months Paid: ${entry.monthsPaid}</p>
-            <p>Expiry: ${entry.expiry}</p>
-        `;
+
+        // Event Details with Transaction Link
+        if (entry.type === "Subscribed") {
+            timelineEntry.innerHTML = `
+                <p><strong>Type:</strong> Subscribed</p>
+                <p><strong>Months Paid:</strong> ${entry.monthsPaid}</p>
+                <p><strong>Expiry:</strong> ${entry.expiry}</p>
+                <p><strong>Date:</strong> ${entry.timestamp}</p>
+                <p><a href="https://polygonscan.com/tx/${entry.transactionHash}" target="_blank" class="neon-link">View Transaction</a></p>
+            `;
+        } else if (entry.type === "SubscriptionCanceled") {
+            timelineEntry.innerHTML = `
+                <p><strong>Type:</strong> Subscription Canceled</p>
+                <p><strong>Date:</strong> ${entry.timestamp}</p>
+                <p><a href="https://polygonscan.com/tx/${entry.transactionHash}" target="_blank" class="neon-link">View Transaction</a></p>
+            `;
+        } else if (entry.type === "SubscriptionFeeUpdated") {
+            timelineEntry.innerHTML = `
+                <p><strong>Type:</strong> Subscription Fee Updated</p>
+                <p><strong>New Fee:</strong> ${entry.newFee} POL</p>
+                <p><strong>Date:</strong> ${entry.timestamp}</p>
+                <p><a href="https://polygonscan.com/tx/${entry.transactionHash}" target="_blank" class="neon-link">View Transaction</a></p>
+            `;
+        }
+
         timelineContainer.appendChild(timelineEntry);
+
+        // Add vertical stack of logos between events (except after the last event)
+        if (index < timeline.length - 1) {
+            const logoStack = document.createElement("div");
+            logoStack.classList.add("logo-stack");
+            logoStack.innerHTML = `
+                ⸬
+                <img src="./assets/DecentSmartHome_Logo.png" class="icon-small">
+                ⸬
+                <img src="./assets/DecentSmartHome_Logo.png" class="icon-small">
+                ⸬
+                <img src="./assets/DecentSmartHome_Logo.png" class="icon-small">
+                ⸬
+            `;
+            timelineContainer.appendChild(logoStack);
+        }
     });
 }
