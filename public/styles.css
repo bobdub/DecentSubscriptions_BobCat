@@ -37,7 +37,7 @@ body {
     font-size: 2rem;
     color: #0ff;
     text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 /* Subscription Button Styles */
@@ -196,4 +196,277 @@ body {
 
 .close-button:hover {
     color: #0ff;
+}
+
+/* Wallet Connect Button */
+.wallet-connect {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wallet-connect:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 1);
+}
+
+.wallet-logo {
+    width: 50px;
+    height: 50px;
+}
+
+/* MetaMask Icon Glow */
+.wallet-connect.connected {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+}
+
+.wallet-connect.disconnected {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+}
+/* Address Display */
+#subscriber-address,
+#influencer-address {
+    font-size: 1.2rem;
+    color: #0ff;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    margin: 10px 0;
+}
+
+#subscriber-address.hidden,
+#influencer-address.hidden {
+    display: none;
+}
+
+#subscriber-address img,
+#influencer-address img {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin: 0 2px;
+}
+/* Icon Styling */
+.icon-small {
+    width: 16px;
+    height: 16px;
+    margin: 0 2px;
+    vertical-align: middle;
+}
+
+/* Contract Button */
+.contract-button {
+    background: transparent;
+    border: none;
+    color: #0ff;
+    font-size: 1.2rem;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #00f;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contract-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #0f0;
+}
+
+/* Hidden Class */
+.hidden {
+    display: none;
+}
+
+/* Neon Font for Contract Address */
+#contract-address {
+    font-size: 1.5rem;
+    color: #0ff;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #00f;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+}
+
+#contract-address:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #0ff, 0 0 30px #0f0;
+}
+
+/* Icon Styling */
+.icon-small {
+    width: 20px;
+    height: 20px;
+    margin: 0 2px;
+    vertical-align: middle;
+}
+
+#updateFeeButton {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: transparent;
+    color: #fff;
+    border: 2px solid #0ff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    transition: 0.3s ease;
+}
+
+#updateFeeButton:hover {
+    color: #0f0;
+    text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
+    box-shadow: 0 0 20px #0f0, 0 0 40px #0f0;
+}
+
+#updateFeeButton.hidden {
+    display: none;
+}
+#subscriptionFee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px; /* Space between elements */
+    color: rgba(167, 16, 226, 0.847);
+    text-shadow: 0 0 3px rgba(167, 16, 226, 0.847), 0 0 10px rgba(212, 226, 16, 0.847);
+    font-size: 1.8rem;
+}
+
+#subscriptionFee img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    filter: drop-shadow(0 0 5px rgba(255, 0, 230, 0.498)); /* Glow effect */
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+#subscriptionFee img:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 10px #fff);
+}
+.fee-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    filter: drop-shadow(0 0 5px rgba(179, 0, 255, 0.527));
+    transition: transform 0.2s ease, filter 0.2s ease;
+    display: inline;
+}
+.hidden {
+    display: none;
+}
+.timeline {
+    margin: 20px 0;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    color: #fff;
+    text-align: left;
+    max-width: 80%;
+}
+
+.timeline-entry {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #0ff;
+}
+
+.timeline-entry p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+#subscriptionGoodies {
+    width: 100%;
+    margin: 20px 0;
+    padding: 15px;
+    position: relative; /* Necessary for video to stay within bounds */
+    background: rgba(0, 0, 0, 0.8); /* Fallback for browsers that don't support video */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 225, 0, 0.755);
+    color: #fbeb027d;
+    max-width: 80%;
+    text-align: center;
+    opacity: 0.7;
+}
+
+#goodiesBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the container proportionally */
+    z-index: -1; /* Places the video behind the content */
+    border-radius: 10px; /* Matches the container's border-radius */
+}
+
+#subscriptionGoodies ul {
+    list-style-type: none;
+    padding: 0;
+    z-index: 1; /* Keeps content above the video */
+    position: relative; /* Ensure content is positioned relative to the container */
+}
+
+#subscriptionGoodies li {
+    margin: 10px 0;
+}
+.goodies-label {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 0, 0.759);
+    text-shadow: 0 0 5px rgba(0, 123, 255, 0.799), 0 0 10px rgba(0, 255, 255, 0.65);
+}   
+
+.goodies-container {
+    width: 100%;
+    padding: 20px;
+    margin: 10px auto;
+    background: rgba(0, 0, 0, 0.8); /* Matches the background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    max-width: 80%; /* Adjust width */
+    text-align: center;
+    position: relative; /* Helps with positioning content inside */
+}
+
+.goodies-container h2 {
+    color: rgb(246, 255, 0);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px rgb(0, 76, 255), 0 0 10px rgb(0, 242, 255);
+}
+
+.goodies-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.goodies-container ul li {
+    margin: 10px 0;
+}
+
+.goodies-container a {
+    color: #0ff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #fff;
+}
+
+.goodies-container a:hover {
+    color: #ff0;
+    text-shadow: 0 0 10px #ff0, 0 0 20px #f0f;
 }
