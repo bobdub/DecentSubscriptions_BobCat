@@ -1,4 +1,4 @@
-const contractAddress = "0x8C6E80B510216840f4eFf18D6d2A9bD81f38e6CC";
+const contractAddress = "0x7D6cac7721613F509DA014771AB60446AEddF675";
 
 document.addEventListener("DOMContentLoaded", async () => {
     const aboutButton = document.getElementById("aboutButton");
